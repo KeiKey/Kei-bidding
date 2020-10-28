@@ -18,12 +18,12 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('publisher_id');
             $table->string('product_title');
             $table->string('description')->nullable();
+            $table->string('img_path')->nullable();
             $table->decimal('starting_price')->nullable();
             $table->decimal('sold_price')->nullable();
             $table->timestamp('start_date');
             $table->timestamp('end_date')->default(null);
             $table->boolean('status')->default(false);
-
             $table->timestamps();
             $table->softDeletes();
 

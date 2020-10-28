@@ -9,6 +9,6 @@ trait RelationsTrait
 {
     public function products(): BelongsTo
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 }
