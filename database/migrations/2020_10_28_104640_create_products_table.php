@@ -23,13 +23,14 @@ class CreateProductsTable extends Migration
             $table->timestamp('start_date');
             $table->timestamp('end_date')->default(null);
             $table->boolean('status')->default(false);
+
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('publisher_id')
                 ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+                ->on('users');
+//                ->onDelete('cascade');
         });
     }
 
