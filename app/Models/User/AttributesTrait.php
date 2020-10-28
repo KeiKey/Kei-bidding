@@ -8,7 +8,7 @@ trait AttributesTrait
 {
     public function isAdmin()
     {
-        return $this->role == RoleEnum::ADMINISTRATOR;
+        return $this->role == RoleEnum::ADMIN;
     }
 
     public function isUser()

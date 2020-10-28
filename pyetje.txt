@@ -1,0 +1,23 @@
+all the 7 methods should be on the controllers - app/http/controllers/...
+-index
+-show
+-store
+-update
+-destroy
+
+actions with the db should be done on the repositories - app/repositories/...? contracts+eloquent
+
+all the business logic is on the services - app/services/...
+
+route->controller->services->repository
+    ->traits are used for models - app/models/... - should it be on folders?
+
+what are the app/policies/...?
+
+what are the app/providers/...?
+
+what are middleware?
+
+what are app/http/requests/api/v1/...?
+
+should i save the roles on the app/enums/...?
