@@ -19,5 +19,3 @@ what are the app/providers/...?
 what are middleware?
 
 what are app/http/requests/api/v1/...?
-
-should i save the roles on the app/enums/...?

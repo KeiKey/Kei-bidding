@@ -18,6 +18,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Route::get('/profile', function () {
+//    return view('CP.profile');
+//});
+//
+//Route::post('/change', 'CPController@changePass')->name('changePwd');
+
+Route::get('/profile')
+    ->uses('CPController@edit')
+    ->name('profile');
+
+Route::post('/profile')
+    ->uses('CPController@update')
+    ->name('profile');
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/panel', 'CPController@index')->name('panel');
+
+
+//Route::post('/change', function () {
+//    return view('auth.passwords.change');
+//});
+//Route::post('/changePassword','ChangePasswordController@index')->name('changePassword');
