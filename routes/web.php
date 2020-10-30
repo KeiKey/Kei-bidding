@@ -18,12 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/profile', function () {
-//    return view('CP.profile');
-//});
-//
-//Route::post('/change', 'CPController@changePass')->name('changePwd');
-
 Route::get('/profile')
     ->uses('CPController@edit')
     ->name('profile');
@@ -36,8 +30,48 @@ Auth::routes();
 
 Route::get('/panel', 'CPController@index')->name('panel');
 
+Route::get('/products')
+    ->uses('ProductController@index')
+    ->name('');
 
-//Route::post('/change', function () {
-//    return view('auth.passwords.change');
-//});
-//Route::post('/changePassword','ChangePasswordController@index')->name('changePassword');
+Route::get('/product')
+    ->uses('ProductController@create')
+    ->name('');
+
+Route::get('/product/{id}')
+    ->uses('ProductController@edit')
+    ->name('');
+
+Route::post('/product/{id}')
+    ->uses('ProductController@update')
+    ->name('');
+
+Route::get('/categories')
+    ->uses('ProductController@index')
+    ->name('');
+
+Route::get('/category')
+    ->uses('ProductController@create')
+    ->name('');
+
+Route::get('/category/{id}')
+    ->uses('ProductController@update')
+    ->name('');
+
+
+
+
+
+
+
+
+//Route::middleware('auth')
+//    ->group(function () {
+//        Route::get('/profile')
+//            ->uses('CPController@edit')
+//            ->name('profile');
+//
+//        Route::post('/profile')
+//            ->uses('CPController@update')
+//            ->name('profile');
+//    });
