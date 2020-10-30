@@ -70,8 +70,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(UpdatePasswordValidation $request)
     {
+//        dd('wporld');
         UserService::update($request['oldPass'], $request['newPass'], auth()->user());
     }
 

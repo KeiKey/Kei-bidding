@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UpdatePasswordValidation extends FormRequest
 {
@@ -24,7 +25,17 @@ class UpdatePasswordValidation extends FormRequest
     public function rules()
     {
         return [
-            'oldPass' => 'required|min:6|max:50',
+            'oldPass' => [
+                    'required',
+                    'max:50',
+                    'min:6',
+                    function ($attribute, $value, $fail) {
+                        if (!Hash::check($value, auth()->user()->password)) {
+                            $fail($attribute.' is invalid.');
+                        }
+                    },
+
+                ],
             'newPass' => 'required|min:6|max:50'
         ];
     }
