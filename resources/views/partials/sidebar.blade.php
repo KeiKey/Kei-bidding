@@ -5,7 +5,7 @@
                 <img src="http://www.hotavatars.com/wp-content/uploads/2019/01/I80W1Q0.png" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <a href="/profile">
+                <a href="/panel/profile">
                     {{--<i class="fa fa-user"> </i> --}}{{ request()->user()->first_name }}
                 </a>
 {{--                <p><a href="/profile">{{ request()->user()->first_name }}</a></p>--}}

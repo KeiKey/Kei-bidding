@@ -42,9 +42,12 @@
 {{--                                    @endif--}}
 {{--                                </div>--}}
 {{--                            </div>--}}
-                            <form method="POST" action="{{route('profile')}}">
+                            <form method="POST" action="{{route('profile.update')}}">
                                 @csrf
                                 <div class="form-row">
+                                    @error('old_password')
+                                    {{$message}}
+                                    @enderror
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             @error('oldPass')

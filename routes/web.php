@@ -14,64 +14,79 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/profile')
-    ->uses('CPController@edit')
-    ->name('profile');
+//Route::get('/profile')
+//    ->uses('PanelController@edit')
+//    ->name('profile');
 
-Route::post('/profile')
-    ->uses('CPController@update')
-    ->name('profile');
+//Route::post('/profile')
+//    ->uses('PanelController@update')
+//    ->name('profile')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/panel', 'CPController@index')->name('panel');
+Route::get('/panel', 'PanelController@index')->name('panel');
 
 Route::get('/products')
     ->uses('ProductController@index')
-    ->name('');
+    ->name('product.index');
 
-Route::get('/product')
-    ->uses('ProductController@create')
-    ->name('');
+Route::get('/products/{id}')
+    ->uses('ProductController@show')
+    ->name('product.index');
 
-Route::get('/product/{id}')
-    ->uses('ProductController@edit')
-    ->name('');
+Route::middleware('auth')
+    ->prefix('/panel')
+    ->group(function () {
+        Route::get('/profile')
+            ->uses('UserController@edit')
+            ->name('profile.edit');
 
-Route::post('/product/{id}')
-    ->uses('ProductController@update')
-    ->name('');
+        Route::post('/profile')
+            ->uses('UserController@update')
+            ->name('profile.update');
 
-Route::get('/categories')
-    ->uses('ProductController@index')
-    ->name('');
+        Route::get('/products')
+            ->uses('ProductController@index')
+            ->name('product.index');
 
-Route::get('/category')
-    ->uses('ProductController@create')
-    ->name('');
+        Route::get('/products/{id}/edit')
+            ->uses('ProductController@edit')
+            ->name('product.edit');
 
-Route::get('/category/{id}')
-    ->uses('ProductController@update')
-    ->name('');
+        Route::post('/products/{id}/update')
+            ->uses('ProductController@update')
+            ->name('product.update');
 
+        Route::post('/products/{id}/delete')
+            ->uses('ProductController@destroy')
+            ->name('product.delete');
 
+        Route::get('/products/create')
+            ->uses('ProductController@create')
+            ->name('product.create');
 
+        Route::get('/categories')
+            ->uses('CategoryController@index')
+            ->name('product.index');
 
+        Route::get('/categories/{id}/edit')
+            ->uses('CategoryController@edit')
+            ->name('product.edit');
 
+        Route::post('/categories/{id}/update')
+            ->uses('CategoryController@update')
+            ->name('product.update');
 
+        Route::post('/categories/{id}/delete')
+            ->uses('CategoryController@destroy')
+            ->name('product.delete');
 
-
-//Route::middleware('auth')
-//    ->group(function () {
-//        Route::get('/profile')
-//            ->uses('CPController@edit')
-//            ->name('profile');
-//
-//        Route::post('/profile')
-//            ->uses('CPController@update')
-//            ->name('profile');
-//    });
+        Route::get('/categories/create')
+            ->uses('CategoryController@create')
+            ->name('product.create');
+        
+    });
