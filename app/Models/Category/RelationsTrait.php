@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 trait RelationsTrait
 {
-    public function products(): BelongsTo
+    public function product(): BelongsTo
     {
         return $this->belongsToMany(Product::class);
     }

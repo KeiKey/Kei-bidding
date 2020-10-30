@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\UserService;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdatePasswordValidation;
 use Illuminate\Support\Facades\Hash;
 
 class CPController extends Controller
@@ -20,7 +23,7 @@ class CPController extends Controller
     /**
      * Show the application CP.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function index()
     {
@@ -38,28 +41,13 @@ class CPController extends Controller
     }
 
     /**
-     * Update
+     * Update the User password
      * @param Request $request
      */
-    public function update(Request $request)
+    public function update(UpdatePasswordValidation $request)
     {
-        if(request()->user()->can('view', $product)){
-            if (Hash::check($request['oldPass'], auth()->user()->password)) {
-                dd($request);
-            }else{
-                dd($request['oldPass']);
-            }
-        };
-//        dd($request);
-//        dd(auth()->user()->password);
-//        dump($request['oldPass']);
-//        if (auth()->user()->password === Hash::make($request['oldPass'])){
-//            dump($request['oldPass']);
-//        } else {
-//            dump($request['newPass']);
-//        }
-        //check if the old pwd is correct
-        //update the pwd
+//        $request['newPass'] = Hash::make($request['newPass']);
+        UserService::update($request['oldPass'], $request['newPass'], auth()->user());
 
     }
 }

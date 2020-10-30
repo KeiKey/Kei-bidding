@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePassword extends FormRequest
+class UpdatePasswordValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdatePassword extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,4 +28,17 @@ class UpdatePassword extends FormRequest
             'newPass' => 'required|min:6|max:50'
         ];
     }
+
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array
+     */
+//    public function messages()
+//    {
+//        return [
+//            'oldPass.required' => 'Please enter a password between 6 and 50 characters',
+//            'newPass.required' => 'Please enter a password between 6 and 50 characters',
+//        ];
+//    }
 }

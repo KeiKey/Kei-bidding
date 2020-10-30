@@ -24,6 +24,18 @@ class ProductPolicy
     }
 
     /**
+     * Determine whether the user can edit the product.
+     *
+     * @param User $user
+     * @param Product $product
+     * @return mixed
+     */
+    public function edit(User $user, Product $product)
+    {
+        return $user->role === RoleEnum::ADMIN || $user->id === $product->publisher_id;
+    }
+
+    /**
      * Determine whether the user can bid the product.
      *
      * @param User $user
@@ -33,18 +45,6 @@ class ProductPolicy
     public function bid(User $user, Product $product)
     {
         return $user->id != $product->publisher_id;
-    }
-
-    /**
-     * Determine whether the user can update the product.
-     *
-     * @param User $user
-     * @param Product $product
-     * @return mixed
-     */
-    public function edit(User $user, Product $product)
-    {
-        return $user->role === RoleEnum::ADMIN || $user->id ===$product->publisher_id;
     }
 }
 

@@ -28,19 +28,43 @@
                                     <label>Role: </label><h5>{{ request()->user()->role }}</h5>
                                 </div>
                             </div>
+{{--                            <div class="form-row">--}}
+{{--                                <div class="form-group col-md-12">--}}
+{{--                                    @if ($errors->any())--}}
+{{--                                        <div class="alert alert-danger">--}}
+{{--                                            {{ $errors->all() }}--}}
+{{--                                            <ul>--}}
+{{--                                                @foreach ($errors->all() as $error)--}}
+{{--                                                    <li>{{ $error }}</li>--}}
+{{--                                                @endforeach--}}
+{{--                                            </ul>--}}
+{{--                                        </div>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <form method="POST" action="{{route('profile')}}">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
+                                            @error('oldPass')
+                                                <span class="invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </span><br>
+                                            @enderror
                                             <label for="oldPass">Old Password:</label>
                                             <input type="password" class="form-control" name="oldPass" placeholder="Enter old password">
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-12 error">
+                                            @error('newPass')
+                                                <span class="invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </span><br>
+                                            @enderror
                                             <label for="newPass">New Password:</label>
-                                            <input type="password" class="form-control" name="newPass" placeholder="Enter old password">
+                                            <input type="password" class="form-control" name="newPass" placeholder="Enter new password">
                                         </div>
                                     </div>
                                 </div>
