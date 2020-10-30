@@ -20,7 +20,5 @@ class UserRepository extends Repository implements UserRepositoryInterface
     {
         $newPass = Hash::make($newPass);
         return $this->update(['password' => $newPass], $userId);
-
-//        ->update($newPass)
     }
 }

@@ -14,7 +14,7 @@ trait RelationsTrait
         return $this->belongsTo(User::class, 'publisher_id');
     }
 
-    public function category(): HasMany
+    public function categories(): HasMany
     {
         $this->hasMany(Category::class);
     }

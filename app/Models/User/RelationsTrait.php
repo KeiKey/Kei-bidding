@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 trait RelationsTrait
 {
-    public function product(): HasMany
+    public function products(): HasMany
     {
         $this->hasMany(Product::class);
     }

@@ -73,7 +73,7 @@ class UserController extends Controller
     public function update(UpdatePasswordValidation $request)
     {
 //        dd('wporld');
-        UserService::update($request['oldPass'], $request['newPass'], auth()->user());
+        UserService::update( $request['newPass'], auth()->user());
     }
 
     /**
